@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "elolink_mc",
+  "version": "${version}",
+  "name": "Elolink-MC",
+  "description": "Elolink but as a Mod for fabric",
+  "authors": [
+      "Elo3000",
+      "fawnoculus"
+  ],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/elolink_mc/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "elolinkmc.de.client.ElolinkMcDataGenerator"
+    ],
+    "client": [
+      "elolinkmc.de.client.ElolinkMcClient"
+    ],
+    "main": [
+      "elolinkmc.de.ElolinkMc"
+    ]
+  },
+  "mixins": [
+    "elolink_mc.mixins.json",
+    {
+      "config": "elolink_mc.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
