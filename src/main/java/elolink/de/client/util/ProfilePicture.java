@@ -2,7 +2,6 @@ package elolink.de.client.util;
 
 import elolink.de.client.errors.Error;
 import elolink.de.client.errors.Errors;
-import elolink.de.client.server.HTTPConnection;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -65,7 +64,8 @@ public class ProfilePicture extends JButton {
     }
 
     private static void actualizePP(String uuid){
-        reformToPNGAndCreateFile(HTTPConnection.getPPBase64(uuid),uuid);
+        // TODO AAAAAAAAAAAa
+        //reformToPNGAndCreateFile(HTTPConnection.getPPBase64(uuid),uuid);
     }
 
     public static void actualizeAllPP(){

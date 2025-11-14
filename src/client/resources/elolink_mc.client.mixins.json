@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.elo3000.elolinkmc.client.mixin",
+  "package": "elolinkmc.de.client.mixin",
   "compatibilityLevel": "JAVA_21",
   "client": [
   ],
