@@ -1,18 +1,19 @@
 package elolink.de.client.util;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import elolink.de.client.encryption.RSADecryption;
 import elolink.de.client.errors.Error;
 import elolink.de.client.errors.Errors;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import elolink.de.client.windows.panes.ChatsPane;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.security.PublicKey;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 public class ChatReader {
 
@@ -118,7 +119,7 @@ public class ChatReader {
                         // Add the new Messages
 //                        chatWindow.addChatElement(msg.message, msg.timestamp, writer, ColorTheme.getDefaultChatColor());
 //                        chatWindow.setTimeOfLastChat(msg.timestamp);
-                        ChatsPane.addChatElementAndRefresh(msg.message, msg.timestamp, writer, ColorTheme.getDefaultChatColor());
+                        //ChatsPane.addChatElementAndRefresh(msg.message, msg.timestamp, writer, ColorTheme.getDefaultChatColor());
 
                     }
 
