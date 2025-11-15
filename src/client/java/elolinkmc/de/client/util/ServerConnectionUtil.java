@@ -22,8 +22,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ServerConnectionUtil {
-    private final Queue<Consumer<ClientConnection>> QUED_TASKS = Queues.<Consumer<ClientConnection>>newConcurrentLinkedQueue();
-    private Channel channel;
+    private static final Queue<Consumer<ClientConnection>> QUED_TASKS = Queues.<Consumer<ClientConnection>>newConcurrentLinkedQueue();
+    private static Channel channel;
+    private static PublicKey publicKey;
 
     private static String serverUrl() {
         return ElolinkMcClientConfig.SERVER_URL.getValue();
@@ -218,8 +219,7 @@ public class ServerConnectionUtil {
                     keyBuilder.append(line);
                 }
                 in.close();
-                HTTPConnection messageOutput = new HTTPConnection();
-                messageOutput.setAddresseePublicKey(parseStringToPublicKey(keyBuilder.toString()));
+                ServerConnectionUtil.setAddresseePublicKey(parseStringToPublicKey(keyBuilder.toString()));
             } else {
                 throw new IOException("ServerResponse: " + responseCode);
             }
@@ -229,14 +229,12 @@ public class ServerConnectionUtil {
 
     }
 
-    private static PublicKey publicKey;
-
-    public void setAddresseePublicKey(PublicKey publicKey) {
-        this.publicKey = publicKey;
+    public static void setAddresseePublicKey(PublicKey publicKey) {
+        ServerConnectionUtil.publicKey = publicKey;
     }
 
-    public PublicKey getAddresseePublicKey(){
-        return this.publicKey;
+    public static PublicKey getAddresseePublicKey(){
+        return ServerConnectionUtil.publicKey;
     }
 
     public static PublicKey parseStringToPublicKey(String rawKeyString) throws Exception {
